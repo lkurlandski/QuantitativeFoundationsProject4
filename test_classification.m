@@ -1,0 +1,170 @@
+function [] = test_classification()
+
+test_1()
+test_2()
+test_3()
+test_3_poly()
+% test_4() % Missing correct data files at the moment
+% test_4_poly() % Missing correct data files at the moment
+
+fprintf("All tests have passed!\n")
+
+end
+
+% Test example 1 from C3 notes
+function [] = test_1()
+
+[y_train, Z_train] = readtrain(2, 1);
+[y_test, Z_test] = readtest(2, 1);
+
+Z_train = add_bias(Z_train);
+Z_test = add_bias(Z_test);
+
+W = fit(Z_train, y_train);
+y_pred = predict(W, Z_test);
+
+W_true = [
+    0.6511 -0.1282 -0.1710;
+    0.3489 0.1282 0.1710;
+];
+if ~isneq(W, W_true)
+    error("Weight matrices should be very nearly equal.")
+end
+if ~isneq(accuracy(y_test, y_pred), 1.00)
+    error("Prediction accuracy should be 100%")
+end
+
+end
+
+% Test example 2 from C3 notes
+function [] = test_2()
+
+[y_train, Z_train] = readtrain(2, 2);
+[y_test, Z_test] = readtest(2, 2);
+
+Z_train = add_bias(Z_train);
+Z_test = add_bias(Z_test);
+
+W = fit(Z_train, y_train);
+y_pred = predict(W, Z_test);
+
+W_true = [
+    0.5387 0.1063 -0.2261;
+    0.4613 -0.1063 0.2261;
+];
+if ~isneq(W, W_true)
+    error("Weight matrices should be very nearly equal.")
+end
+if ~isneq(accuracy(y_test, y_pred), 0.80)
+    error("Prediction accuracy should be 80%")
+end
+
+end
+
+% Test example 3 from C3 notes
+function [] = test_3()
+
+[y_train, Z_train] = readtrain(3, 1);
+[y_test, Z_test] = readtest(3, 1);
+
+Z_train = add_bias(Z_train);
+Z_test = add_bias(Z_test);
+
+W = fit(Z_train, y_train);
+y_pred = predict(W, Z_test);
+
+W_true = [
+    0.3900 0.0843 -0.2157;
+    0.5143 -0.2222 0.0478;
+    0.0957 0.1379 0.1679
+];
+if ~isneq(W, W_true)
+    error("Weight matrices should be very nearly equal.")
+end
+if ~isneq(accuracy(y_test, y_pred), 0.8667)
+    error("Prediction accuracy should be 86.67%")
+end
+
+end
+
+% Test example 3 from C3 notes (with polynomial expansion)
+function [] = test_3_poly()
+
+[y_train, Z_train] = readtrain(3, 1);
+[y_test, Z_test] = readtest(3, 1);
+
+Z_train = add_bias(polynomial_expand(Z_train, 2));
+Z_test = add_bias(polynomial_expand(Z_test, 2));
+
+W = fit(Z_train, y_train);
+y_pred = predict(W, Z_test);
+
+W_true = [
+    0.4365 0.1590 -0.2267 -0.0483 0.0131;
+    0.4973 -0.2627 0.0776 0.0332 -0.0248;
+    0.0662 0.1037 0.1491 0.0151 0.0118
+];
+if ~isneq(W, W_true)
+    error("Weight matrices should be very nearly equal.")
+end
+if ~isneq(accuracy(y_test, y_pred), 0.90)
+    error("Prediction accuracy should be 90%")
+end
+
+end
+
+% Test example 4 from C3 notes
+% TODO: not tested
+function [] = test_4()
+
+[y_train, Z_train] = readtrain(3, 2);
+[y_test, Z_test] = readtest(3, 2);
+
+Z_train = add_bias(Z_train);
+Z_test = add_bias(Z_test);
+
+W = fit(Z_train, y_train);
+y_pred = predict(W, Z_test);
+
+W_true = [
+    0.3347 -0.0482 -0.0496;
+    0.3315 0.0562 0.0414;
+    0.3338 -0.0079 0.0083
+];
+
+if ~isneq(W, W_true)
+    error("Weight matrices should be very nearly equal.")
+end
+if ~isneq(accuracy(y_test, y_pred), 0.70)
+    error("Prediction accuracy should be 70%")
+end
+
+end
+
+% Test example 4 from C3 notes (with polynomial expansion)
+% TODO: not tested
+function [] = test_4_poly()
+
+[y_train, Z_train] = readtrain(3, 2);
+[y_test, Z_test] = readtest(3, 2);
+
+Z_train = add_bias(polynomial_expand(Z_train, 2));
+Z_test = add_bias(polynomial_expand(Z_test, 2));
+
+W = fit(Z_train, y_train);
+y_pred = predict(W, Z_test);
+
+W_true = [
+    0.0274 -0.0494 -0.487 0.0093 0.0083;
+    0.0236 0.0559 0.0414 0.0099 0.0077;
+    0.0490 -0.0065 0.0072 -0.0192 -0.0160
+];
+
+if ~isneq(W, W_true)
+    error("Weight matrices should be very nearly equal.")
+end
+if ~isneq(accuracy(y_test, y_pred), 1.00)
+    error("Prediction accuracy should be 100%")
+end
+
+end
