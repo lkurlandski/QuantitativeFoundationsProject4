@@ -4,3 +4,4 @@ train-images-idx3-ubyte
 train-labels-idx3-ubyte
 train-labels-idx1-ubyte
 att_faces
+data
