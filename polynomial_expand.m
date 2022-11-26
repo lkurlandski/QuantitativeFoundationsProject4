@@ -1,5 +1,10 @@
-% Perform polynomial expansion to some degree on data
 function [Z] = polynomial_expand(Z, degree)
+% Perform polynomial expansion to some degree on data.
+% Args:
+  % Z: data without an added bias term
+  % degree: degree of expansion
+% Returns:
+  % Z: data with polynomial features added
 
 n_features = size(Z, 1);
 n_samples = size(Z, 2);

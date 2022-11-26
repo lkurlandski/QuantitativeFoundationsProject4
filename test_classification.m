@@ -1,4 +1,5 @@
 function [] = test_classification()
+% Test the classification functions using in-class examples.
 
 test_1()
 test_2()

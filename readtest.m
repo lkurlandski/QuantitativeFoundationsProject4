@@ -41,8 +41,9 @@ elseif nclass == 3
         fclose(fid);
     end
 elseif nclass == 10
-   [img, ~] = read_hw;
+   [img, lbl] = read_hw;
    testdata = img(:,16001:20000);
+   testlabel = lbl(16001:20000)+1;
 end
 end
     
