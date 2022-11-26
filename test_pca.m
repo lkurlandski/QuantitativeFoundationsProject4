@@ -27,6 +27,11 @@ Z_train = add_bias(Z_train);
 Z_test = add_bias(Z_test);
 
 W = fit(Z_train, y_train);
+
+y_pred = predict(W, Z_train);
+a = accuracy(y_pred, y_train);
+fprintf("Train accuracy using SVD algorithm: %f\n", a);
+
 y_pred = predict(W, Z_test);
 a = accuracy(y_pred, y_test);
 fprintf("Test accuracy using SVD algorithm: %f\n", a);
@@ -52,6 +57,11 @@ Z_train = add_bias(Z_train);
 Z_test = add_bias(Z_test);
 
 W = fit(Z_train, y_train);
+
+y_pred = predict(W, Z_train);
+a = accuracy(y_pred, y_train);
+fprintf("Train accuracy using EIG algorithm: %f\n", a);
+
 y_pred = predict(W, Z_test);
 a = accuracy(y_pred, y_test);
 fprintf("Test accuracy using EIG algorithm: %f\n", a);

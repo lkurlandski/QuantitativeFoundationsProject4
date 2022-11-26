@@ -6,8 +6,6 @@ function [a_train, a_test] = classification(p, k)
 % Returns:
   % a_train: accuracy of the system on the training set
   % a_train: accuracy of the system on the test set
-% Notes:
-  % At the moment, this achieves abysmal accuracy.
 
 path = "./att_faces";
 train_path = "data/train";
@@ -20,18 +18,20 @@ end
 shuffle = true;
 [Z_train, y_train] = get_faces_dataset(train_path, shuffle);
 [Z_test, y_test] = get_faces_dataset(test_path, shuffle, 1:35);
+Z = [Z_train Z_test];
 
 if p > 0
-    Z_train = polynomial_expand(Z_train, p);
-    Z_test = polynomial_expand(Z_test, p);
+    Z = polynomial_expand(Z, p);
 end
 if k > 0
-    Z_train = pca_(Z_test, k, "eig");
-    Z_test = pca_(Z_test, k, "eig");
+    Z = pca_(Z, k, "eig");
 end
 
+Z_train = Z(:, 1:size(Z_train, 2));
+Z_test = Z(:, size(Z_train, 2) + 1:end);
 Z_train = add_bias(Z_train);
 Z_test = add_bias(Z_test);
+
 W = fit(Z_train, y_train);
 y_pred_train = predict(W, Z_train);
 y_pred_test = predict(W, Z_test);
