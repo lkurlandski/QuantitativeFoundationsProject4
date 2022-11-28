@@ -12,33 +12,33 @@ function [trainlabel,traindata] = readtrain(nclass,nexample)
 
 if nclass == 2
     if nexample == 1
-        fid = fopen('traindata2C.txt','r');
+        fid = fopen('data/txtdata/traindata2C.txt','r');
         traindata = fscanf(fid,'%f %f \n',[2, 200]);
         fclose(fid);
-        fid = fopen('trainlabel2C.txt','r');
+        fid = fopen('data/txtdata/trainlabel2C.txt','r');
         trainlabel = fscanf(fid,'%d \n',[1, 200]);
         fclose(fid);
     elseif nexample == 2
-        fid = fopen('traindata_ESL_2C.txt','r');
+        fid = fopen('data/txtdata/traindata_ESL_2C.txt','r');
         traindata = fscanf(fid,'%f %f \n',[2, 200]);
         fclose(fid);
-        fid = fopen('trainlabel_ESL_2C.txt','r');
+        fid = fopen('data/txtdata/trainlabel_ESL_2C.txt','r');
         trainlabel = fscanf(fid,'%d \n',[1, 200]);
         fclose(fid);
      end
 elseif nclass == 3
     if nexample == 2
-        fid = fopen('traindata3C.txt','r');
+        fid = fopen('data/txtdata/traindata3C.txt','r');
         traindata = fscanf(fid,'%f %f \n',[2, 300]);
         fclose(fid);
-        fid = fopen('trainlabel3C.txt','r');
+        fid = fopen('data/txtdata/trainlabel3C.txt','r');
         trainlabel = fscanf(fid,'%d \n',[1, 300]);
         fclose(fid);
     elseif nexample == 1
-        fid = fopen('traindata_ESL_3C.txt','r');
+        fid = fopen('data/txtdata/traindata_ESL_3C.txt','r');
         traindata = fscanf(fid,'%f %f \n',[2, 300]);
         fclose(fid);
-        fid = fopen('trainlabel_ESL_3C.txt','r');
+        fid = fopen('data/txtdata/trainlabel_ESL_3C.txt','r');
         trainlabel = fscanf(fid,'%d \n',[1, 300]);
         fclose(fid);
     end

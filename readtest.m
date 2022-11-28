@@ -10,33 +10,33 @@ function [testlabel, testdata] = readtest(nclass,nexample)
 
 if nclass ==2
     if nexample == 1
-        fid = fopen('testdata2C.txt','r');
+        fid = fopen('data/txtdata/testdata2C.txt','r');
         testdata = fscanf(fid,'%f %f \n',[2, 20]);
         fclose(fid);
-        fid = fopen('testlabel2C.txt','r');
+        fid = fopen('data/txtdata/testlabel2C.txt','r');
         testlabel = fscanf(fid,'%d \n',[1, 20]);
         fclose(fid);
     elseif nexample == 2
-        fid = fopen('testdata_ESL_2C.txt','r');
+        fid = fopen('data/txtdata/testdata_ESL_2C.txt','r');
         testdata = fscanf(fid,'%f %f \n',[2, 20]);
         fclose(fid);
-        fid = fopen('testlabel_ESL_2C.txt','r');
+        fid = fopen('data/txtdata/testlabel_ESL_2C.txt','r');
         testlabel = fscanf(fid,'%d \n',[1, 20]);
         fclose(fid);
     end
 elseif nclass == 3
     if nexample == 2
-        fid = fopen('testdata3C.txt','r');
+        fid = fopen('data/txtdata/testdata3C.txt','r');
         testdata = fscanf(fid,'%f %f \n',[2, 30]);
         fclose(fid);
-        fid = fopen('testlabel3C.txt','r');
+        fid = fopen('data/txtdata/testlabel3C.txt','r');
         testlabel = fscanf(fid,'%d \n',[1, 30]);
         fclose(fid);
     elseif nexample == 1
-        fid = fopen('testdata_ESL_3C.txt','r');
+        fid = fopen('data/txtdata/testdata_ESL_3C.txt','r');
         testdata = fscanf(fid,'%f %f \n',[2, 30]);
         fclose(fid);
-        fid = fopen('testlabel_ESL_3C.txt','r');
+        fid = fopen('data/txtdata/testlabel_ESL_3C.txt','r');
         testlabel = fscanf(fid,'%d \n',[1, 30]);
         fclose(fid);
     end

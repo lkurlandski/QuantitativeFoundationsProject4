@@ -5,8 +5,8 @@ test_1()
 test_2()
 test_3()
 test_3_poly()
-% test_4() % Missing correct data files at the moment
-% test_4_poly() % Missing correct data files at the moment
+test_4() % Missing correct data files at the moment
+test_4_poly() % Missing correct data files at the moment
 
 fprintf("All tests have passed!\n")
 

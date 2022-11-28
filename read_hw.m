@@ -1,8 +1,8 @@
 function [image,label] = read_hw
 %output: image: nxN matrix, each column is an image
 % label: Nx1 vector, label for the digit for each image
-fid = fopen('train-images-idx3-ubyte','r');
-fid2 = fopen('train-labels-idx1-ubyte','r');
+fid = fopen('data/txtdata/train-images-idx3-ubyte','r');
+fid2 = fopen('data/txtdata/train-labels-idx1-ubyte','r');
 
 mn = fread(fid,4,'uint8');
 
