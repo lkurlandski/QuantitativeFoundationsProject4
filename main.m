@@ -6,13 +6,20 @@
 [data_train, label_train] = get_faces_dataset('data/att_faces', 1, 1:35, 1:8);
 [data_test , label_test ] = get_faces_dataset('data/att_faces', 1, 1:35, 9:10);
 
-test_1(data_train, label_train', data_test, label_test');
-test_2(data_train, label_train', data_test, label_test');
+%type of algorithm
+SVD = 1; % Singular Value Decomposition
+EIG = 0; % Eigen-decomposition
 
-fprintf("All tests have passed!\n")
+if SVD == 1
+    test_1(data_train, label_train', data_test, label_test');
+end
+
+if EIG == 1
+    test_2(data_train, label_train', data_test, label_test');
+end
 
 
-function [] = test_1(Z_train, y_train, Z_test, y_test)
+function a_test = test_1(Z_train, y_train, Z_test, y_test)
 % Test classification accuracy of digits dataset using SVD algorithm
 
 Z_train = cast(Z_train, "double");
@@ -29,16 +36,16 @@ Z_test = add_bias(Z_test);
 W = fit(Z_train, y_train);
 
 y_pred = predict(W, Z_train);
-a = accuracy(y_pred, y_train);
-fprintf("Train accuracy using SVD algorithm: %f\n", a);
+a_train = accuracy(y_pred, y_train);
+fprintf("Train accuracy using SVD algorithm: %f\n", a_train);
 
 y_pred = predict(W, Z_test);
-a = accuracy(y_pred, y_test);
-fprintf("Test accuracy using SVD algorithm: %f\n", a);
+a_test = accuracy(y_pred, y_test);
+fprintf("Test accuracy using SVD algorithm: %f\n", a_test);
 
 end
 
-function [] = test_2(Z_train, y_train, Z_test, y_test)
+function a_test = test_2(Z_train, y_train, Z_test, y_test)
 % Test classification accuracy of digits dataset using EIG algorithm
 
 Z_train = cast(Z_train, "double");
@@ -55,11 +62,11 @@ Z_test = add_bias(Z_test);
 W = fit(Z_train, y_train);
 
 y_pred = predict(W, Z_train);
-a = accuracy(y_pred, y_train);
-fprintf("Train accuracy using EIG algorithm: %f\n", a);
+a_train = accuracy(y_pred, y_train);
+fprintf("Train accuracy using EIG algorithm: %f\n", a_train);
 
 y_pred = predict(W, Z_test);
-a = accuracy(y_pred, y_test);
-fprintf("Test accuracy using EIG algorithm: %f\n", a);
+a_test = accuracy(y_pred, y_test);
+fprintf("Test accuracy using EIG algorithm: %f\n", a_test);
 
 end
