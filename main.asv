@@ -4,16 +4,19 @@
 % Test the principal component analysis alorithms.
 
 [data_train, label_train] = get_faces_dataset('data/att_faces', 1, 1:35, 1:8);
-[data_test , label_test ] = get_faces_dataset('data/att_faces', 1, 1:35, 9:10);
+[data_test , label_test ] = get_faces_dataset('data/att_faces', 1, 1:35, 1:8);
 
-test_1(data_train, label_train', data_test, label_test');
-test_2(data_train, label_train', data_test, label_test');
+test_1(data_train, label_train, data_test, label_test);
+test_2();
 
 fprintf("All tests have passed!\n")
 
 
-function [] = test_1(Z_train, y_train, Z_test, y_test)
+function [] = test_1(Ztrain, y_train)
 % Test classification accuracy of digits dataset using SVD algorithm
+
+[y_train, Z_train] = readtrain(10, nan);
+[y_test, Z_test] = readtest(10, nan);
 
 Z_train = cast(Z_train, "double");
 Z_test = cast(Z_test, "double");
@@ -38,8 +41,12 @@ fprintf("Test accuracy using SVD algorithm: %f\n", a);
 
 end
 
-function [] = test_2(Z_train, y_train, Z_test, y_test)
+
+function [] = test_2()
 % Test classification accuracy of digits dataset using EIG algorithm
+
+[y_train, Z_train] = readtrain(10, nan);
+[y_test, Z_test] = readtest(10, nan);
 
 Z_train = cast(Z_train, "double");
 Z_test = cast(Z_test, "double");
