@@ -136,8 +136,9 @@ W_true = [
 if ~isneq(W, W_true)
     error("Weight matrices should be very nearly equal.")
 end
+v
 
-if ~isneq(accuracy(y_test, y_pred), 0.6667) % modified to 0.6667 from 0.70
+if ~isneq(accuracy(y_test, y_pred), 0.6667)
     error("Prediction accuracy should be 70%")
 end
 
