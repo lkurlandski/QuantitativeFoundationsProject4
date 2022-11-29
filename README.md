@@ -36,12 +36,12 @@ The programs will create subdirectories inside of ./data and copy att_faces imag
 
 To run the facial recognition program, type the following in the MatLab command window
 
-> recognition(k)
+> [~, accuracy] = recognition(k)
 
 where k is the number of eigenfaces to use. For example, recognition(28).
 
 To run the facial identification program, type the following in the MatLab command window
 
-> identification(p, v)
+> [accuracy, fmeasure] = identification(p, v)
 
 where p is the degree of polynomial expansion (use 0 for no expansion) and v is the proportion of variance that PCA should capture (use 0 for no PCA). For example, identification(0, .90) or identification(2, .75).
