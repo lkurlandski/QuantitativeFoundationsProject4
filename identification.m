@@ -15,9 +15,8 @@ if ~exist(train_path, "dir") || ~exist(test_path, "dir")
     data_split(path, train_path, test_path);
 end
 
-shuffle = true;
-[Z_train, y_train] = get_faces_dataset(train_path, shuffle);
-[Z_test, y_test] = get_faces_dataset(test_path, shuffle, 1:35);
+[Z_train, y_train] = get_faces_dataset(train_path, true);
+[Z_test, y_test] = get_faces_dataset(test_path, true);
 
 if p > 1
     Z_train = polynomial_expand(Z_train, p);
