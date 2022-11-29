@@ -2,13 +2,27 @@
 
 ## Eigenfaces
 
+#contents
+- 'main_eigenface.m'
+main script to produce eigenface images
+- 'get_faces_dataset.m'
+read data set
+- 'pc.m'
+calculate Principal Components
+
 #how to run the codes
-run 'main.m' to check the accuracy of PCA on face recognition
+run 'main_eigenface.m' to produce 
+- eigenfaces
+- reconstructed image
+- weights and Eucidean distanses
 
 >make sure the parameter of getting training and test data in the function 'get_faces_dataset'
-- path: curently 'data/att_faces' is assigned
-- shuffle: whether randomize the order (shuffle = 1)  of data or not (shuffle = 0) 
-- people/samples: numbers (labels) of the data (1 ≤ people ≤ 40, 1 ≤ samples ≤ 10)
+- path: curently 'datt_faces' is assigned
+- shuffle: whether randomize the order (shuffle = true)  of data or not (shuffle = 0) 
+- M: numbers of the people (1 ≤ M ≤ 40)
+- n: numbers of the sample (1 ≤ n ≤ 10)
+- InputImage: the file name of new input image
+
 
 ## Classification
 
